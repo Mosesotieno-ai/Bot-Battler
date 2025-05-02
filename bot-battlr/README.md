@@ -23,10 +23,10 @@ Welcome to Bot Battlr! A React-powered app to build your robot army.
 ## project structure
 src/
 ├── components/
-│   ├── BotCollection.jsx       # Shows all available bots
-│   ├── YourBotArmy.jsx         # Displays enlisted bots
-│   ├── BotCard.jsx             # UI for a single bot (used in both collections)
-│   ├── BotSpecs.jsx            # (Advanced) Detailed view of a single bot
-│   └── SortBar.jsx             # (Advanced) Sorting options
-├── App.jsx                     # Main app layout & state management
-├── index.js                    # Renders <App />
+│   ├── BotCollection.jsx       
+│   ├── YourBotArmy.jsx         
+│   ├── BotCard.jsx             
+│   ├── BotSpecs.jsx            
+│   └── SortBar.jsx             
+├── App.jsx                     
+├── index.js                   
