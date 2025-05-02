@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import BotCollection from "./components/BotCollection";
+import YourBotArmy from "./components/YourBotArmy";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [bots, setBots] = useState([]);
+  const [army, setArmy] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8001/bots")
+      .then((res) => res.json())
+      .then(setBots);
+  }, []);
+
+  function enlistBot(bot) {
+    if (!army.find(b => b.id === bot.id)) {
+      setArmy([...army, bot]);
+    }
+  }
+
+  function releaseBot(bot) {
+    setArmy(army.filter(b => b.id !== bot.id));
+  }
+
+  function deleteBot(bot) {
+    fetch(`http://localhost:8001/bots/${bot.id}`, { method: "DELETE" })
+      .then(() => {
+        setBots(bots.filter(b => b.id !== bot.id));
+        releaseBot(bot);
+      });
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <YourBotArmy army={army} onRelease={releaseBot} onDelete={deleteBot} />
+      <BotCollection bots={bots} onEnlist={enlistBot} />
+    </div>
+  );
 }
 
-export default App
+export default App;

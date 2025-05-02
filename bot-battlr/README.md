@@ -1,12 +1,32 @@
-# React + Vite
+# 🤖 Bot Battlr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Bot Battlr! A React-powered app to build your robot army.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse and enlist bots
+- Release or permanently delete bots
+- Fetch bots from a JSON server
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone repo and `cd` into the folder
+2. Run `npm install`
+3. Start server: `json-server --watch db.json --port 8001`
+4. Start app: `npm start`
+
+## Tech Stack
+
+- React
+- JSON Server
+
+## project structure
+src/
+├── components/
+│   ├── BotCollection.jsx       # Shows all available bots
+│   ├── YourBotArmy.jsx         # Displays enlisted bots
+│   ├── BotCard.jsx             # UI for a single bot (used in both collections)
+│   ├── BotSpecs.jsx            # (Advanced) Detailed view of a single bot
+│   └── SortBar.jsx             # (Advanced) Sorting options
+├── App.jsx                     # Main app layout & state management
+├── index.js                    # Renders <App />
