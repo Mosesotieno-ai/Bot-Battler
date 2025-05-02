@@ -18,7 +18,7 @@ function BotCard({ bot, onClick, onDelete }) {
             e.stopPropagation(); // prevent parent click
             onDelete(bot);
           }}
-          style={{ color: "white", background: "red", marginTop: "8px" }}
+          style={{ color: "white", background: "black", marginTop: "8px" }}
         >
           ❌ Discharge
         </button>
